@@ -1,0 +1,47 @@
+@use 'dark';
+@use 'light';
+
+body[app-theme-style='dark'] {
+  @include dark.darkTheme();
+}
+
+body[app-theme-style='light'] {
+  @include light.lightTheme();
+}
+
+.text-primary {
+  color: var(--p-primary-color) !important;
+}
+
+.bg-primary {
+  color: var(--p-primary-color-text) !important;
+  background-color: var(--p-primary-color) !important;
+}
+
+.border-primary {
+  border-color: var(--p-primary-color) !important;
+}
+
+.text-color {
+  color: var(--p-text-color) !important;
+}
+
+.text-color-secondary {
+  color: var(--p-text-color-secondary) !important;
+}
+
+.surface-ground {
+  background-color: var(--p-surface-ground) !important;
+}
+
+.surface-card {
+  background-color: var(--p-surface-card) !important;
+}
+
+.surface-hover {
+  background-color: var(--p-surface-hover) !important;
+}
+
+.surface-border {
+  border-color: var(--p-surface-border) !important;
+}

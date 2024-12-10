@@ -1,0 +1,17 @@
+.form-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e0f7fa 0%, #4fc3f7 100%);
+}
+
+.login-form {
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: rgba(142, 142, 142, 0.19) 0 6px 15px 0;
+  background: white;
+  border-radius: 4px;
+}

@@ -1,0 +1,38 @@
+<div class="form-container">
+
+  <form appForm [formGroup]="loginForm" class="login-form" (ngSubmit)="submitForm()">
+    <app-form-item>
+      <app-form-control>
+        <h1 class="text-center inline-block w-full">BBS管理</h1>
+      </app-form-control>
+    </app-form-item>
+
+    <app-form-item>
+      <app-form-control>
+        <input class="w-full" formControlName="account" pInputText autocomplete="account" placeholder="账号"/>
+      </app-form-control>
+    </app-form-item>
+
+    <app-form-item>
+      <app-form-control>
+        <input class="w-full" formControlName="password" pInputText type="password" autocomplete="password"
+               placeholder="密码"/>
+      </app-form-control>
+    </app-form-item>
+
+    <app-form-item>
+      <app-form-control>
+        <div class="flex items-center justify-end w-full">
+          <a routerLink="/auth/reset-password" class="text-sm text-primary">忘记密码</a>
+        </div>
+      </app-form-control>
+    </app-form-item>
+
+    <app-form-item class="m-0">
+      <app-form-control>
+        <p-button class="w-full" styleClass="w-full" (onClick)="submitForm()">登录</p-button>
+      </app-form-control>
+    </app-form-item>
+  </form>
+
+</div>

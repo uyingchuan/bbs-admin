@@ -1,0 +1,57 @@
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 1280px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+html,
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: var(--surface-ground);
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5b5c5c;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background: #b3b3b3;
+  }
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
+}
