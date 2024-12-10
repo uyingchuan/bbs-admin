@@ -1,0 +1,9 @@
+<div
+  #instance
+  class="scrollbar-bar"
+  [class.is-vertical]="vertical"
+  [class.scrollbar-fade-enter-active]="always || visible"
+  [class.scrollbar-fade-leave-active]="!always && !visible"
+  (mousedown)="clickTrackHandler($event)">
+  <div #thumb class="scrollbar-thumb" [style]="thumbStyle()" (mousedown)="clickThumbHandler($event)"></div>
+</div>

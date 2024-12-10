@@ -9,7 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 import { isInvalidForm } from '@components/form/form.util';
 import { HttpService } from '@services/http.service';
 import { environment } from '@environment';
-import { LoginService } from '@services/login.service';
+import { CustomerInfo, LoginService } from '@services/login.service';
 import { I18nService } from '@services/i18n.service';
 import { FormDirective } from '@components/form/form.directive';
 
@@ -55,16 +55,22 @@ export class LoginComponent implements OnInit {
   submitForm() {
     if (isInvalidForm(this.loginForm)) return;
 
-    this.http.doPost(
+    this.http.doPost<LoginResponse>(
       environment.server.bbsServer + environment.urls.auth.login,
       this.loginForm.value,
-      () => {
-        this.loginService.setSignIn();
-        this.router.navigate(['/home']).then();
+      (res) => {
+        this.loginService.setLoginToken(res.token);
+        this.loginService.setCustomerInfo(res.userInfo);
+        this.router.navigate(['/dashboard']).then();
       },
       (code) => {
         this.i18n.showErrorMessage(environment.urls.auth.login, code);
       },
     );
   }
+}
+
+interface LoginResponse {
+  token: string;
+  userInfo: CustomerInfo;
 }

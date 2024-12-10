@@ -41,6 +41,9 @@ importers:
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
+      primeicons:
+        specifier: ^7.0.0
+        version: 7.0.0
       primeng:
         specifier: ^18.0.0
         version: 18.0.0(fmdzttacromfqwcgvutfzn4dq4)
@@ -3975,6 +3978,9 @@ packages:
     resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
     engines: {node: '>=14'}
     hasBin: true
+
+  primeicons@7.0.0:
+    resolution: {integrity: sha512-jK3Et9UzwzTsd6tzl2RmwrVY/b8raJ3QZLzoDACj+oTJ0oX7L9Hy+XnVwgo4QVKlKpnP/Ur13SXV/pVh4LzaDw==}
 
   primeng@18.0.0:
     resolution: {integrity: sha512-H6+J9ZjRzWLoIQpOYxFcHRk/7emrIVmX0Y9O3Ff9fk+V0E7Yd4A1zLZFHllUAwJfdnJgno8+/iq2NvVwMXMHig==}
@@ -9062,6 +9068,8 @@ snapshots:
       fast-diff: 1.3.0
 
   prettier@3.4.2: {}
+
+  primeicons@7.0.0: {}
 
   primeng@18.0.0(fmdzttacromfqwcgvutfzn4dq4):
     dependencies:

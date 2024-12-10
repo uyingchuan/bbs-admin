@@ -49,7 +49,7 @@ export class RouteStrategyService implements RouteReuseStrategy {
   }
 
   shouldDetach(route: ActivatedRouteSnapshot): boolean {
-    return (!route.data['keepFresh'] && this.onSameUrlNavigation === 'ignore') || true;
+    return !route.data['keepFresh'] && this.onSameUrlNavigation === 'ignore';
   }
 
   shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {

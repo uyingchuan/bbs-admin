@@ -1,0 +1,143 @@
+$b: null;
+$e: null;
+
+@mixin e($element) {
+  $e: $element !global;
+  $selector: &;
+  $current-selector: '';
+
+  @each $unit in $element {
+    $current-selector: #{$current-selector + '.' + $b + '-' + $unit + ','};
+  }
+
+  @at-root {
+    #{$selector} {
+      #{$current-selector} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin b($block) {
+  $b: $block !global;
+
+  .#{$b} {
+    @content;
+  }
+}
+
+@mixin when($state) {
+  @at-root {
+    &.#{'is-' + $state} {
+      @content;
+    }
+  }
+}
+
+@mixin m($modifier) {
+  $selector: &;
+  $current-selector: '';
+
+  @each $unit in $modifier {
+    $current-selector: #{$current-selector + $selector + '-' + $unit + ','};
+  }
+
+  @at-root {
+    #{$current-selector} {
+      @content;
+    }
+  }
+}
+
+@include b(scrollbar) {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+
+  @include e(wrap) {
+    overflow: auto;
+    height: 100%;
+
+    @include m(hidden-default) {
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  ::ng-deep {
+    @include e(thumb) {
+      position: relative;
+      display: block;
+      width: 0;
+      height: 0;
+      cursor: pointer;
+      border-radius: inherit;
+      background: var(--surface-400);
+      transition: 0.3s background-color;
+
+      &:hover {
+        background: var(--surface-500);
+      }
+    }
+
+    @include e(bar) {
+      position: absolute;
+      right: 2px;
+      bottom: 2px;
+      z-index: 1;
+      border-radius: 4px;
+
+      @include when(vertical) {
+        width: 6px;
+        top: 2px;
+
+        > div {
+          width: 100%;
+        }
+      }
+
+      @include when(horizontial) {
+        height: 6px;
+        left: 2px;
+
+        > div {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+:host ::ng-deep {
+  .scrollbar-fade {
+    &-enter-active {
+      transition: opacity 340ms ease-out;
+    }
+
+    &-leave-active {
+      transition: opacity 120ms ease-out;
+    }
+
+    &-enter-form,
+    &-leave-active {
+      opacity: 0;
+    }
+  }
+}
+
+.scrollbar-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  margin: 0 auto;
+  transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// 此处禁止设置height，固定height与ResizeObserver冲突
+.scrollbar-view {
+  width: 100%;
+}

@@ -1,0 +1,20 @@
+<div #scrollbar class="scrollbar">
+  <div
+    #wrap
+    class="scrollbar-wrap scrollbar-wrap-hidden-default"
+    [class]="wrapClass"
+    [style]="wrapStyle()"
+    (scroll)="handleScroll()">
+    <div #view class="scrollbar-view" [ngClass]="scrollbarViewClass">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <app-bar
+    #bar
+    [height]="sizeHeight"
+    [width]="sizeWidth"
+    [always]="always"
+    [ratioX]="ratioX"
+    [ratioY]="ratioY"></app-bar>
+</div>

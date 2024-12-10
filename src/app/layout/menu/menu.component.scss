@@ -1,0 +1,117 @@
+.menu-container ol,
+.menu-container li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-container .menu-item {
+  display: flex;
+  align-items: center;
+  height: 3.125rem;
+  position: relative;
+  font-size: 1rem;
+  color: var(--text-color-secondary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text-color);
+  }
+
+  &:active {
+    color: var(--selection-text-color);
+  }
+
+  &.parent-menu.activated {
+    color: var(--primary-color);
+  }
+
+  &.router-menu.activated {
+    color: var(--p-primary-50);
+    background: var(--primary-color);
+  }
+}
+
+.menu-container .menu-item .menu-icon {
+  width: 3.375rem;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .pi {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+  }
+}
+
+.menu-container .menu-item.parent-menu:active .menu-icon .pi {
+  border-color: var(--border-color);
+}
+
+.menu-container .menu-item.parent-menu.activated .menu-icon .pi {
+  border-color: var(--p-primary-200);
+}
+
+.menu-container .menu-item .menu-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+}
+
+.menu-container .menu-item .menu-toggle {
+  width: 3.125rem;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .pi {
+    transition: 300ms ease-in-out;
+  }
+
+  .pi.rotate {
+    transform: rotate(-90deg);
+  }
+}
+
+.menu-container .child-menu-container {
+  .menu-item {
+    padding-left: 3.375rem;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+}
+
+::ng-deep .layout-sub-menu-list-overlay {
+  margin-left: 0.5rem;
+  background: var(--surface-section);
+  border-radius: 4px;
+
+  .menu-container .menu-item {
+    padding: 0 0.5rem;
+  }
+
+  .menu-container .menu-item .menu-label {
+    padding: 0 1rem;
+  }
+
+  .p-overlaypanel-content {
+    padding: 0;
+  }
+
+  .px-router-link {
+    border-radius: 4px;
+  }
+}

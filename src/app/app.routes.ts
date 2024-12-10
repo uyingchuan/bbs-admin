@@ -13,14 +13,18 @@ export const routes: Routes = [
     canActivate: [LoginGuard],
     children: [
       {
-        path: 'home',
-        component: LayoutComponent,
+        path: '',
+        loadChildren: () => import('@pages/data/data.routes'),
+      },
+      {
+        path: 'article',
+        loadChildren: () => import('@pages/article/article.routes'),
       },
     ],
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: '/home',
+    redirectTo: '/dashboard',
   },
 ];

@@ -25,7 +25,7 @@ export class LoginGuard {
   }
 
   isLogin(): Promise<boolean> | boolean {
-    const isLogin = this.loginService.isLogin;
+    const isLogin = this.loginService.isLogin();
     if (!isLogin) {
       this.router.navigate(['/auth/login']).then();
     }

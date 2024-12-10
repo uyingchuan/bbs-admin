@@ -1,1 +1,11 @@
-<p>header works!</p>
+<div class="header-container">
+  <!-- 上方面包屑 -->
+  <div class="breadcrumb-container flex items-center">
+    <!-- 面包屑 -->
+    <p-breadcrumb class="layout-breadcrumb max-w-full hidden md:block" [model]="breadItems"></p-breadcrumb>
+    <!-- 占位 -->
+    <div class="flex-grow"></div>
+    <!-- 登出 -->
+    <p-button [link]="true" icon="pi pi-sign-out" class="mx-2" (onClick)="signOut()" />
+  </div>
+</div>

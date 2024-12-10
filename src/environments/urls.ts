@@ -1,5 +1,5 @@
 export default {
   auth: {
-    login: '/auth/login',
+    login: '/auth/admin-login',
   },
 };

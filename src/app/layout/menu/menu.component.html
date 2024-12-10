@@ -1,0 +1,86 @@
+<div class="menu-container">
+  <ol>
+    @for (menu of menuList; track menu.routerLink) {
+      <li>
+        <!-- 无链接菜单(泛指父级菜单) -->
+        <div
+          class="menu-item parent-menu"
+          [class.activated]="menu['activated']"
+          *ngIf="menu.items?.length"
+          (click)="expandMenu(menu, $event, $index)"
+        >
+          <ng-container *ngTemplateOutlet="menuItemContent; context: { $implicit: menu }"></ng-container>
+        </div>
+
+        <!-- 超链接菜单 -->
+        <a class="menu-item link-menu" *ngIf="menu.url && !menu.routerLink" [href]="menu.url">
+          <ng-container *ngTemplateOutlet="menuItemContent; context: { $implicit: menu }"></ng-container>
+        </a>
+
+        <!-- 路由菜单 -->
+        <a
+          class="menu-item router-menu"
+          [class.activated]="menu['activated']"
+          *ngIf="!menu.items?.length"
+          [routerLink]="menu.routerLink"
+          [target]="'_self'"
+        >
+          <ng-container *ngTemplateOutlet="menuItemContent; context: { $implicit: menu }"></ng-container>
+        </a>
+
+        <!-- 递归子菜单 -->
+        <div
+          class="child-menu-container"
+          [@expandCollapse]="menu.expanded ? 'expanded' : 'collapsed'"
+          *ngIf="menu.items?.length"
+        >
+          <!-- 子菜单 -->
+          <app-menu [menuList]="menu.items!"></app-menu>
+        </div>
+
+        <!-- 弹出式子菜单 -->
+        <app-overlay-panel #subMenuListTmpl [styleClass]="'layout-sub-menu-list-overlay'" [alignment]="Alignment.right">
+          <div
+            *ngIf="menu.items"
+            class="overflow-hidden transition-all transition-duration-400 transition-ease-in-out py-1"
+          >
+            <app-scrollbar [maxHeight]="'42rem'" [always]="true">
+              <div class="menu-container">
+                <ol>
+                  <li *ngFor="let child of menu.items">
+                    <a
+                      class="menu-item router-menu"
+                      *ngIf="child.routerLink"
+                      (click)="subMenuListTmpl.hide()"
+                      [routerLink]="child.routerLink"
+                      routerLinkActive="router-link-active"
+                      [routerLinkActiveOptions]="{
+                        paths: 'exact',
+                        queryParams: 'ignored',
+                        matrixParams: 'ignored',
+                        fragment: 'ignored',
+                      }"
+                    >
+                      <span class="menu-label" [title]="child.label">
+                        {{ child.label }}
+                      </span>
+                    </a>
+                  </li>
+                </ol>
+              </div>
+            </app-scrollbar>
+          </div>
+        </app-overlay-panel>
+      </li>
+    }
+  </ol>
+</div>
+
+<!-- 菜单内容(菜单图标-菜单文本-展开图标) -->
+<ng-template #menuItemContent let-menu>
+  <span class="menu-icon"><i class="pi" [class]="menu.icon"></i></span>
+  <span class="menu-label" [title]="menu.label">{{ menu.label }}</span>
+  <span class="menu-toggle" *ngIf="menu.items?.length">
+    <i class="pi pi-angle-down" [class.rotate]="!menu.expanded"></i>
+  </span>
+</ng-template>

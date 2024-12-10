@@ -1,47 +1,27 @@
-@use 'dark';
-@use 'light';
-
-body[app-theme-style='dark'] {
-  @include dark.darkTheme();
-}
-
-body[app-theme-style='light'] {
-  @include light.lightTheme();
-}
+@import './dark';
+@import './light';
 
 .text-primary {
-  color: var(--p-primary-color) !important;
+  color: var(--primary-text-color) !important;
 }
 
 .bg-primary {
-  color: var(--p-primary-color-text) !important;
-  background-color: var(--p-primary-color) !important;
-}
-
-.border-primary {
-  border-color: var(--p-primary-color) !important;
+  color: var(--primary-text-color) !important;
+  background-color: var(--primary-color) !important;
 }
 
 .text-color {
-  color: var(--p-text-color) !important;
+  color: var(--text-color) !important;
 }
 
 .text-color-secondary {
-  color: var(--p-text-color-secondary) !important;
+  color: var(--text-secondary-color) !important;
 }
 
-.surface-ground {
-  background-color: var(--p-surface-ground) !important;
+.ground-background {
+  background-color: var(--ground-background) !important;
 }
 
-.surface-card {
-  background-color: var(--p-surface-card) !important;
-}
-
-.surface-hover {
-  background-color: var(--p-surface-hover) !important;
-}
-
-.surface-border {
-  border-color: var(--p-surface-border) !important;
+.card-background {
+  background-color: var(--card-background) !important;
 }

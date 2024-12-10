@@ -1,0 +1,27 @@
+.layout-wrapper {
+  height: 100vh;
+  padding-left: 13.125rem;
+  background: var(--ground-background);
+  transition: padding-left 0.3s;
+
+  @media (width <= 768px) {
+    padding-left: 0 !important;
+  }
+}
+
+.main-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container.show-tag .content-container {
+  padding-top: 5.125rem;
+}
+
+.content-container {
+  height: 100%;
+  width: 100%;
+  padding-top: 3rem;
+  flex: 1;
+}

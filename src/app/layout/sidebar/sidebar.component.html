@@ -1,0 +1,46 @@
+<!-- md:侧边菜单栏 -->
+<div class="sidebar-container surface-card" [class.collapse]="menuCollapse">
+  <ng-container *ngTemplateOutlet="logoTmpl"></ng-container>
+  <ng-container *ngTemplateOutlet="menuListTmpl; context: { $implicit: menuList, height: 'calc(100vh - 6rem)' }">
+  </ng-container>
+  <!-- 底部按钮 -->
+  <div class="sidebar-bottom-container surface-card">
+    <div class="collapse-button-container">
+      <p-button *ngIf="!menuCollapse" [link]="true" icon="pi pi-th-large" (onClick)="toggleMenuCollapse()" />
+      <p-button *ngIf="menuCollapse" [link]="true" icon="pi pi-align-justify" (onClick)="toggleMenuCollapse()" />
+    </div>
+  </div>
+</div>
+
+<!-- sm:抽屉式菜单栏 -->
+<p-sidebar [(visible)]="sidebarVisible" [showCloseIcon]="false">
+  <ng-template pTemplate="headless">
+    <div class="sidebar-container surface-card">
+      <ng-container *ngTemplateOutlet="logoTmpl"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="menuListTmpl; context: { $implicit: menuList, height: 'calc(100vh - 3rem)' }"
+      ></ng-container>
+    </div>
+  </ng-template>
+</p-sidebar>
+
+<ng-template #logoTmpl>
+  <a class="sidebar-logo-container p-button p-button-link" [routerLink]="'/dashboard'">
+    <div class="logo-image">
+      <img ngSrc="assets/images/logo.svg" width="21" height="21" alt="logo" />
+    </div>
+    <span class="logo-text">BBS Admin</span>
+  </a>
+</ng-template>
+
+<ng-template #menuListTmpl let-menuList let-height="height">
+  <app-scrollbar [always]="false" [height]="height">
+    <div class="layout-sidebar">
+      <aside>
+        <nav>
+          <app-menu [menuList]="menuList" />
+        </nav>
+      </aside>
+    </div>
+  </app-scrollbar>
+</ng-template>
