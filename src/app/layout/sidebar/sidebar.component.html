@@ -1,10 +1,10 @@
 <!-- md:侧边菜单栏 -->
-<div class="sidebar-container surface-card" [class.collapse]="menuCollapse">
+<div class="sidebar-container card-background" [class.collapse]="menuCollapse">
   <ng-container *ngTemplateOutlet="logoTmpl"></ng-container>
   <ng-container *ngTemplateOutlet="menuListTmpl; context: { $implicit: menuList, height: 'calc(100vh - 6rem)' }">
   </ng-container>
   <!-- 底部按钮 -->
-  <div class="sidebar-bottom-container surface-card">
+  <div class="sidebar-bottom-container card-background">
     <div class="collapse-button-container">
       <p-button *ngIf="!menuCollapse" [link]="true" icon="pi pi-th-large" (onClick)="toggleMenuCollapse()" />
       <p-button *ngIf="menuCollapse" [link]="true" icon="pi pi-align-justify" (onClick)="toggleMenuCollapse()" />
@@ -15,7 +15,7 @@
 <!-- sm:抽屉式菜单栏 -->
 <p-sidebar [(visible)]="sidebarVisible" [showCloseIcon]="false">
   <ng-template pTemplate="headless">
-    <div class="sidebar-container surface-card">
+    <div class="sidebar-container card-background">
       <ng-container *ngTemplateOutlet="logoTmpl"></ng-container>
       <ng-container
         *ngTemplateOutlet="menuListTmpl; context: { $implicit: menuList, height: 'calc(100vh - 3rem)' }"
@@ -29,7 +29,7 @@
     <div class="logo-image">
       <img ngSrc="assets/images/logo.svg" width="21" height="21" alt="logo" />
     </div>
-    <span class="logo-text">BBS Admin</span>
+    <span class="logo-text">Admin</span>
   </a>
 </ng-template>
 

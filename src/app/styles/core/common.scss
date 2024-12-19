@@ -1,0 +1,37 @@
+.page-container {
+  height: 100%;
+  padding: 0.5rem;
+
+  @media (min-width: 640px) {
+    padding: 1rem;
+  }
+}
+
+.page-container .card-container {
+  height: 100%;
+  padding: 0.5rem;
+  background: var(--card-background);
+  border-radius: 0.25rem;
+
+  @media (min-width: 640px) {
+    padding: 1rem;
+  }
+}
+
+.card-container.table-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-container.table-card p-table {
+  flex-grow: 1;
+}
+
+.card-container.table-card tr > td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-container .table-container table {
+  table-layout: fixed;
+}
